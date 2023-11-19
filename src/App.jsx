@@ -17,7 +17,8 @@ function App() {
     <Routes>
       <Route path="/" element={<HomePage 
       myPokemons={myPokemons} setMyPokemons={setMyPokemons}/>}/>
-      <Route path="/battle" element={<BattlePage />}/>
+      <Route path="/battle" element={<BattlePage myPokemons={myPokemons} allPokemonList={allPokemonList} setAllPokemonList={setAllPokemonList}
+      API_URL={API_URL} waitMain={waitMain} setWaitMain={setWaitMain}/>}/>
     </Routes>
   )
   

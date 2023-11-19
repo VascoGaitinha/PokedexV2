@@ -17,9 +17,21 @@ const AllPokemonsDiv = (props) =>{
   },[waitMain])
 
   const handleFav = (x) =>{
-    x.favourite = !x.favourite
-    setUpdate(!update)
-    setMyPokemons([...myPokemons,x])
+
+    const exists = myPokemons.find(pokemon => pokemon.id === x.id);
+    if(!exists){    
+      x.favourite = true
+      setUpdate(!update)
+      setMyPokemons([...myPokemons,x])}
+
+    else if(exists)  {
+      x.favourite=false
+      setUpdate(!update)
+      setMyPokemons(myPokemons.filter((pokemon)=>{
+        return pokemon.id !== x.id
+      }))
+    }
+  
   }
 
   const handleSearch = (x) => {

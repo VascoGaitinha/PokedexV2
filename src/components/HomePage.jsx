@@ -8,7 +8,7 @@ function HomePage(props) {
 
   const API_URL="https://pokeapi.co/api/v2/pokemon/?offset=0&limit=649"
 
-const   {myPokemons, setMyPokemons} = props;
+  const {myPokemons, setMyPokemons} = props;
   const [waitMain, setWaitMain] = useState(true)
   const [allPokemonList, setAllPokemonList] = useState([])
   const [thisPokemon,setThisPokemon] = useState({})
@@ -44,7 +44,14 @@ const   {myPokemons, setMyPokemons} = props;
     <DetailsDiv thisPokemon={thisPokemon} waitMain={waitMain} update={update} setUpdate={setUpdate}/>
     <div style={{height: "fit-content", margin: "auto"}}>
     <p>{myPokemons.length}/6</p>
-    <button onClick={() =>navigate("/battle")} style={{height: "10vh", width: "5vw", fontSize: "4em"}}>GO!</button>
+    <button
+    onClick={() => myPokemons.length===6 && navigate("/battle")}
+    style={{
+        height: "10vh",
+        width: "5vw",
+        fontSize: "4em",
+        color: myPokemons.length === 6 ? 'green' : 'red',
+        }}> GO!</button>
     </div>
     <AllPokemonsDiv allPokemonList={allPokemonList} waitMain={waitMain} setThisPokemon={setThisPokemon} update={update} setUpdate={setUpdate}
     myPokemons={myPokemons} setMyPokemons={setMyPokemons}/>
