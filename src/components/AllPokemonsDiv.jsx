@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 import details from "../assets/details.json"
 const AllPokemonsDiv = (props) =>{
 
-  const {allPokemonList, waitMain, setThisPokemon, update,setUpdate} = props;
+  const {allPokemonList, waitMain, setThisPokemon, update,setUpdate, myPokemons, setMyPokemons} = props;
   const [displayList,setDisplayList] = useState()
   const [favourites, setFavourites] = useState(false)
 
@@ -19,6 +19,7 @@ const AllPokemonsDiv = (props) =>{
   const handleFav = (x) =>{
     x.favourite = !x.favourite
     setUpdate(!update)
+    setMyPokemons([...myPokemons,x])
   }
 
   const handleSearch = (x) => {
